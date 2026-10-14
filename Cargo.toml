@@ -1,0 +1,29 @@
+[package]
+name = "digraph-ds"
+version = "0.5.10"
+edition = "2024"
+description = "A graph editor and analysis tool for Nintendo DS"
+repository = "https://github.com/Vjarkjan/digraph-ds"
+readme = "README.md"
+publish = false
+
+[dependencies]
+devy = { git = "https://github.com/Vjarkjan/devy", rev = "ffb6f751e32c2eb7c7154eab87c522cf9ceb09f3" }
+bevy_app = { version = "=0.16.1", default-features = false }
+bevy_ecs = { version = "=0.16.1", default-features = false }
+serde = { version = "1", default-features = false, features = ["derive", "alloc"] }
+postcard = { version = "1", default-features = false, features = ["alloc"] }
+
+[profile.dev]
+panic = "abort"
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+lto = true
+codegen-units = 1
+debug = 1

@@ -1,0 +1,8 @@
+# Sólo se carga al pedir una compilación de Nintendo DS.
+[unstable]
+build-std = ["core", "alloc", "compiler_builtins"]
+build-std-features = ["compiler-builtins-mem"]
+json-target-spec = true
+
+[target.armv5te-nintendo-ds]
+rustflags = ["--cfg", "portable_atomic_no_outline_atomics"]
